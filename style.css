@@ -5,7 +5,7 @@ body {
 }
 
 .header {
-  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-5/htmlcss1-img_canyon.jpeg");
+  background-image: url("https://www.ocf.berkeley.edu/~uas/assets/img/berk2.jpg");
   background-position: center center;
   background-size: cover;
   height: 700px;
