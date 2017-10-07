@@ -34,7 +34,6 @@ var req = http.request(options, function (res) {
 req.end();
 
 if (madeMoney) {
-  var http = require("https");
 
   var options = {
     "method": "POST",
@@ -77,7 +76,6 @@ if (madeMoney) {
        html: '<html><body>YAY, {{first_name or \'you great person\'}}!<br></body></html>' } }));
   req.end();
 } else {
-  var http = require("https");
 
 var options = {
   "method": "POST",
@@ -120,6 +118,47 @@ req.write(JSON.stringify({ campaign_id: 'postman_inline_both_example',
      html: '<html><body>Oh No, {{first_name or \'you great person\'}}!<br></body></html>' } }));
 req.end();
 }
+
+var json = {
+  "items" : [ {
+    "id" : "Y2lzY29zcGFyazovL3VzL1JPT00vYmJjZWIxYWQtNDNmMS0zYjU4LTkxNDctZjE0YmIwYzRkMTU0",
+    "title" : "Project Unicorn - Sprint 0",
+    "type" : "group",
+    "isLocked" : true,
+    "teamId" : "Y2lzY29zcGFyazovL3VzL1JPT00vNjRlNDVhZTAtYzQ2Yi0xMWU1LTlkZjktMGQ0MWUzNDIxOTcz",
+    "lastActivity" : "2016-04-21T19:12:48.920Z",
+    "created" : "2016-04-21T19:01:55.966Z"
+  } ]
+}
+
+
+var options = {
+  "method": "GET",
+  "hostname": "api.ciscospark.com",
+  "port": null,
+  "path": "/v1/rooms",
+  "headers": {
+    "authorization": "Bearer NGMwNTNkZTgtNjc1OC00ZmQyLTk1ZDYtODAzNzE5OTM2NDA2N2I2NWJiOTctYjU3",
+    "content-type": "application/json; charset=utf-8",
+    "cache-control": "no-cache",
+    "postman-token": "f94d3178-3a35-31b6-91b4-b1c77e4e1c10"
+  }
+};
+
+var req = http.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function () {
+    var body = Buffer.concat(chunks);
+    body = JSON.parse(body.toString());
+    body.items[0].id
+    console.log(body.toString());
+  });
+});
 
 
 
